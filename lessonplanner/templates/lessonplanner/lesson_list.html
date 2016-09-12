@@ -1,20 +1,12 @@
-<html>
-    <head>
-        <title>Hartman Lesson Plans</title>
-    </head>
-    <body>
-      <div>
-          <h1><a href="/">Django Girls Blog</a></h1>
-      </div>
+{% extends 'lessonplanner/base.html' %}
 
-        {% for lesson in Lessons %}
-        <div>
-          <p>{{ lesson.unit }}</p>
-          <p>{{ lesson.chapter  }}</p>
-          <p>{{ lesson.summary|linebreaksbr }}</p>
-        <h1><a href="">{{ lesson.className }}</a></h1>
-      </div>
-      {% endfor %}
-
-    </body>
-</html>
+{% block content %}
+    {% for lesson in Lessons %}
+        <div class="post">
+            <h1><a href="{% url 'lesson_detail' pk=lesson.pk %}">{{ lesson.className }}</a></h1>
+            <p>{{ lesson.unit|linebreaksbr }}</p>
+            <p>{{ lesson.chapter|linebreaksbr }}</p>
+            <p>{{ lesson.summary|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
