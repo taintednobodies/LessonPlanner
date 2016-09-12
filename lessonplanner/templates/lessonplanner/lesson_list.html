@@ -3,16 +3,18 @@
         <title>Hartman Lesson Plans</title>
     </head>
     <body>
-        <div>
-            <h1><a href="">Lesson Plan Keeper</a></h1>
-        </div>
+      <div>
+          <h1><a href="/">Django Girls Blog</a></h1>
+      </div>
 
-        {% for lesson in lessons %}
+        {% for lesson in Lessons %}
         <div>
-          <p>Date: {{ lesson.date }}</p>
-          <h1><a href="">{{ lesson.unit }}</a></h1>
-          <p>{{ lesson.chapter|linebreaksbr }}</p>
-        </div>
-{% endfor %}
+          <p>{{ lesson.unit }}</p>
+          <p>{{ lesson.chapter  }}</p>
+          <p>{{ lesson.summary|linebreaksbr }}</p>
+        <h1><a href="">{{ lesson.className }}</a></h1>
+      </div>
+      {% endfor %}
+
     </body>
 </html>
