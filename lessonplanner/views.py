@@ -3,8 +3,31 @@ from .models import Lesson
 from django.shortcuts import render, get_object_or_404
 from .forms import LessonForm
 from django.shortcuts import redirect
+from django.db.models import Q
+import operator
 
 # Create your views here.
+
+class BlogSearchListView(Lesson):
+    """
+    Display a Blog List page filtered by the search query.
+    """
+    paginate_by = 10
+
+    def get_queryset(self):
+        result = super(BlogSearchListView, self).get_queryset()
+
+        query = self.request.GET.get('q')
+        if query:
+            query_list = query.split()
+            result = result.filter(
+                reduce(operator.and_,
+                       (Q(summary__icontains=q) for q in query_list)) |
+                reduce(operator.and_,
+                       (Q(description__icontains=q) for q in query_list))
+            )
+
+        return result
 
 def lesson_list(request):
     lessons = Lesson.objects.order_by('unit')
