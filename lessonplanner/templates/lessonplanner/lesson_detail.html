@@ -2,10 +2,14 @@
 
 {% block content %}
     <div class="post">
-        <h1>{{ lesson.className }}</h1>
-        <p>{{ lesson.unit|linebreaksbr }}</p>
-        <p>{{ lesson.chapter|linebreaksbr }}</p>
-        <p>Materials: {{ lesson.materials|linebreaksbr }}</p>
-        <p>Description: {{ lesson.description|linebreaksbr }}</p>
+        <h1>{{ Lesson.className }}</h1>
+        <p>{{ Lesson.unit|linebreaksbr }}</p>
+        <br>
+        <p>{{ Lesson.chapter|linebreaksbr }}</p>
+        <br>
+        <p>Materials: {{ Lesson.materials|linebreaksbr }}</p>
+        <br>
+        <p>Description: {{ Lesson.description|linebreaksbr }}</p>
+        <br>
     </div>
 {% endblock %}
