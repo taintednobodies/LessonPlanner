@@ -29,3 +29,7 @@ def lesson_new(request):
     else:
         form = LessonForm()
     return render(request, 'lessonplanner/lesson_edit.html', {'form': form})
+
+def lesson_search(request, search):
+    lessons = Lesson.objects.filter(summary__search)
+    return render(request, "lessonplanner/lesson_search.html", {'Lessons' : lessons })

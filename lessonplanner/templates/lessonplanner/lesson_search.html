@@ -1,0 +1,12 @@
+{% extends 'lessonplanner/base.html' %}
+
+{% block content %}
+    {% for lesson in Lessons %}
+        <div class="post">
+            <h1><a href="{% url 'lesson_detail' pk=lesson.pk %}">{{ lesson.className }}</a></h1>
+            <p>{{ lesson.unit|linebreaksbr }}</p>
+            <p>{{ lesson.chapter|linebreaksbr }}</p>
+            <p>{{ lesson.summary|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
