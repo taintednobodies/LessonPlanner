@@ -1,12 +1,12 @@
 {% extends 'lessonplanner/base.html' %}
 
 {% block content %}
-    {% for lesson in Lessons %}
+    {% for entry in found_entries %}
         <div class="post">
-            <h1><a href="{% url 'lesson_detail' pk=lesson.pk %}">{{ lesson.className }}</a></h1>
-            <p>{{ lesson.unit|linebreaksbr }}</p>
-            <p>{{ lesson.chapter|linebreaksbr }}</p>
-            <p>{{ lesson.summary|linebreaksbr }}</p>
+            <h1><a href="{% url 'lesson_detail' pk=lesson.pk %}">{{ entry.className }}</a></h1>
+            <p>{{ entry.unit|linebreaksbr }}</p>
+            <p>{{ entry.chapter|linebreaksbr }}</p>
+            <p>{{ entry.summary|linebreaksbr }}</p>
         </div>
     {% endfor %}
 {% endblock %}
